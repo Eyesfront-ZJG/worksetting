@@ -1,0 +1,102 @@
+"runtime bundle/vim-pathogen/autoload/pathogen.vim
+"call pathogen#infect()
+filetype on
+"call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
+"call pathogen#helptags()
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'pangloss/vim-javascript'
+" Bundle 'Lokaltog/powerline'
+
+
+" hit enter to cancel searched highlight
+noremap <CR> :nohlsearch<CR>
+
+" select ALL
+"map <C-A> ggVG
+map <C-L> $v0
+map <C-P> :CtrlP <CR>
+map <C-T> :TlistToggle <CR>
+nmap <Home> 0
+imap <Home> <ESC>0i
+map <C-S> :w <CR>
+imap <C-S> <ESC>:w <CR>
+map <F10> <Esc>:tabnew<CR>
+map <C-J> gT
+imap <C-J> <Esc>gT
+map <C-K> gt
+imap <C-K> <Esc>gt
+map <C-_> 0i// <Esc>
+imap <C-_> <Esc>0i// <Esc>
+map <C-\> 0xxx<Esc>
+imap <C-\> <Esc>0xxx<Esc>
+imap <F9> <Esc>:tabm
+map <F9> <Esc>:tabm
+map <F8> :set paste
+vmap <F6> : w!/tmp/x1<CR>
+vmap <F7> :r /tmp/x1<CR>
+
+let g:Powerline_symbols = 'fancy'
+
+set nocompatible   " Disable vi-compatibility
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+
+vnoremap <C-C> "+y " Copy to Clipboard
+
+"autocmd vimenter * NERDTree
+"autocmd vimenter * TlistToggle
+autocmd FileType c,cpp setlocal shiftwidth=4 | set expandtab
+"autocmd FileType javascript setlocal shiftwidth=2 | set expandtab
+
+let g:pymode_run = 1
+
+" Key for run python code
+let g:pymode_run_key = '<leader>r'
+
+set nonu
+
+" tags
+set tags+=~/.vim/tags/cpp
+set tags+=~/.vim/tags/opencv
+" build tags of your own project with Ctrl-F12
+"map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q.<CR>
+
+" OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
+
+
+" let Tlist_Auto_Open = 1
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow = 1
+
+
+"set sessionoptions=buffers,curdir,resize,folds,tabpages
+"" 注意目录要存在
+"autocmd VimLeave * mks! /tmp/vimfiles/session/Session.vim
+"
+"let g:vbookmark_bookmarkSaveFile = '~/.vim/.vimbookmark'
+"set regexpengine=1
+syntax enable
+
+set cursorcolumn
+set cursorline
+set smarttab
+

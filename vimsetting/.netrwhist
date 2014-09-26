@@ -1,7 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/argus/work/retina/libretina/build/retina'
-let g:netrw_dirhist_2='/home/cyclops/work/meta-server-client'
-let g:netrw_dirhist_3='/home/cyclops/work'
-let g:netrw_dirhist_4='/home/cyclops/work/meta-server-client'
-let g:netrw_dirhist_5='/home/cyclops/work/gecko/node_modules/color-log'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/cyclops/.vim'
+let g:netrw_dirhist_2='/home/cyclops/work/hot-goods'
+let g:netrw_dirhist_3='/home/cyclops/work/gecko'

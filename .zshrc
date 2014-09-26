@@ -39,14 +39,23 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
-bindkey "^R" history-incremental-search-backward
+#bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-search-forward
 bindkey '^[[C' forward-char
 bindkey '^[[D' backward-char
-bindkey '^K' forward-word
-bindkey '^J' backward-word
-bindkey "^H" kill-line
+bindkey '^H' forward-word
+bindkey '^L' backward-word
+bindkey "^K" kill-line
 bindkey "^[d" delete-word
+# bindkey '^R' history-incremental-pattern-search-backward
+# Search backwards and forwards with a pattern
+bindkey -M vicmd '/' history-incremental-pattern-search-backward
+bindkey -M vicmd '?' history-incremental-pattern-search-forward
+# set up for insert mode too
+bindkey -M viins '^R' history-incremental-pattern-search-backward
+bindkey -M viins '^F' history-incremental-pattern-search-forward
+bindkey "^P" vi-up-line-or-history
+bindkey "^N" vi-down-line-or-history
 
 alias ls="ls --color=auto --show-control-chars"
 alias less="less -r"
@@ -60,10 +69,13 @@ alias mv="mv -iv"
 alias ping="ping -n"
 alias tmux="tmux -2 -u"
 alias rsync="rsync -avzP"
+alias msh="mosh"
 alias ssh="autossh"
 alias gdf="git difftool"
 alias gck="git checkout"
-alias psauxg="ps aux | grep -v grep | grep"
+alias gst="git status"
+alias gad="git add"
+alias psauxg="ps aux | grep -v grep | grep -i "
 
 #export CFLAGS=' -O2 -march=native -mtune=native -pipe '
 #export CPPFLAGS=' -O2 -march=native -mtune=native -pipe '
@@ -97,6 +109,7 @@ alias 9='cd -9'
 
 alias d='dirs -v | head -10'
 
+ulimit -c unlimited
 # source /home/cyclops/work/workenv/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #setopt extended_glob
  TOKENS_FOLLOWED_BY_COMMANDS=('|' '||' ';' '&' '&&' 'sudo' 'do' 'time' 'strace')

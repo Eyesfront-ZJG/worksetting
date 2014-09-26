@@ -1,6 +1,6 @@
 "runtime bundle/vim-pathogen/autoload/pathogen.vim
 "call pathogen#infect()
-filetype on
+filetype off
 "call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 "call pathogen#helptags()
@@ -12,7 +12,11 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'pangloss/vim-javascript'
-" Bundle 'Lokaltog/powerline'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Valloric/YouCompleteMe'
+"Bundle 'djoshea/vim-autoread'
 
 
 " hit enter to cancel searched highlight
@@ -20,6 +24,7 @@ noremap <CR> :nohlsearch<CR>
 
 " select ALL
 "map <C-A> ggVG
+map <C-D> :q <CR>
 map <C-L> $v0
 map <C-P> :CtrlP <CR>
 map <C-T> :TlistToggle <CR>
@@ -28,27 +33,35 @@ imap <Home> <ESC>0i
 map <C-S> :w <CR>
 imap <C-S> <ESC>:w <CR>
 map <F10> <Esc>:tabnew<CR>
+"nmap <C-I> j[mzf%
+"nmap <C-N> zdj
 map <C-J> gT
 imap <C-J> <Esc>gT
 map <C-K> gt
 imap <C-K> <Esc>gt
-map <C-_> 0i// <Esc>
-imap <C-_> <Esc>0i// <Esc>
-map <C-\> 0xxx<Esc>
-imap <C-\> <Esc>0xxx<Esc>
-imap <F9> <Esc>:tabm
+"map <C-,> \cm <Esc>
+"imap <C-,> <Esc>\cm <Esc>
+map <C-_> \cc <Esc>
+imap <C-_> <Esc>\cc <Esc>
+map <C-\> \cu<Esc>
+imap <C-\> <Esc>\cu<Esc>
 map <F9> <Esc>:tabm
-map <F8> :set paste
-vmap <F6> : w!/tmp/x1<CR>
-vmap <F7> :r /tmp/x1<CR>
-
-let g:Powerline_symbols = 'fancy'
+imap <F9> <Esc>:tabm
+"imap <F7> <Esc>:set paste<CR>
+"imap <F8> <Esc>:set nopaste<CR>
+noremap <F5> :silent! e!<CR>
+vmap <F5> : w!/tmp/x1<CR>
+vmap <F6> : r /tmp/x1<CR>
+map <F11> :BufExplorer<CR>
+"map <F7> zf%
+"map [[ ?{<CR>w99[{
+"map ][ /}<CR>b99]}
+"map ]] j0[[%/{<CR>
+"map [] k$][%?}<CR>
 
 set nocompatible   " Disable vi-compatibility
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
-
-vnoremap <C-C> "+y " Copy to Clipboard
 
 "autocmd vimenter * NERDTree
 "autocmd vimenter * TlistToggle
@@ -65,6 +78,7 @@ set nonu
 " tags
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/opencv
+set tags+=~/.vim/tags/boost
 " build tags of your own project with Ctrl-F12
 "map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q.<CR>
 
@@ -87,7 +101,7 @@ let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
 
-
+let g:ctrlp_mruf_exclude = 'node_modules'
 "set sessionoptions=buffers,curdir,resize,folds,tabpages
 "" 注意目录要存在
 "autocmd VimLeave * mks! /tmp/vimfiles/session/Session.vim
@@ -99,4 +113,7 @@ syntax enable
 set cursorcolumn
 set cursorline
 set smarttab
-
+set foldmethod=marker
+set showmode
+set showcmd
+set autoread

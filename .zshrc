@@ -2,7 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory autocd beep extendedglob notify HIST_IGNORE_DUPS
+setopt appendhistory autocd beep extendedglob notify HIST_IGNORE_DUPS SHARE_HISTORY INC_APPEND_HISTORY HIST_SAVE_NO_DUPS HIST_FIND_NO_DUPS EXTENDED_HISTORY HIST_EXPIRE_DUPS_FIRST
 bindkey -v
 # End of lines configured by zsh-newuser-install
 #PROMPT='%{ [01;36m%}%n%{[01;34m%}@%{[01;35m%}%M %{[01;33m%}%D %T %{[01;32m%}%/
@@ -40,20 +40,20 @@ bindkey "\e[F" end-of-line
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
 #bindkey "^R" history-incremental-search-backward
-bindkey "^S" history-search-forward
-bindkey '^[[C' forward-char
-bindkey '^[[D' backward-char
-bindkey '^H' forward-word
-bindkey '^L' backward-word
-bindkey "^K" kill-line
-bindkey "^[d" delete-word
+#bindkey "^S" history-search-forward
+bindkey -M viins '^L' vi-forward-blank-word-end
+bindkey -M viins '^H' vi-backward-blank-word
+bindkey -M vicmd '^L' vi-forward-blank-word-end
+bindkey -M vicmd '^H' vi-backward-blank-word
+bindkey "^K" kill-whole-line
+bindkey "^D" kill-word
 # bindkey '^R' history-incremental-pattern-search-backward
 # Search backwards and forwards with a pattern
 bindkey -M vicmd '/' history-incremental-pattern-search-backward
 bindkey -M vicmd '?' history-incremental-pattern-search-forward
 # set up for insert mode too
 bindkey -M viins '^R' history-incremental-pattern-search-backward
-bindkey -M viins '^F' history-incremental-pattern-search-forward
+bindkey -M viins '^S' history-incremental-pattern-search-forward
 bindkey "^P" vi-up-line-or-history
 bindkey "^N" vi-down-line-or-history
 
